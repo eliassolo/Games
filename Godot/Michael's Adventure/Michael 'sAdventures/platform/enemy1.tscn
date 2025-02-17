@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://sprites/charachters/enemy1/BAD_WALK LEFT 3.png" type="Texture" id=1]
+[ext_resource path="res://enemy1.gd" type="Script" id=2]
+[ext_resource path="res://sound/sound effects/enemyDamage.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/sound effects/coin.wav" type="AudioStream" id=4]
+[ext_resource path="res://sound/sound effects/damage.wav" type="AudioStream" id=5]
+[ext_resource path="res://sprites/charachters/enemy1/BAD_WALK LEFT 5.png" type="Texture" id=6]
+[ext_resource path="res://sprites/charachters/enemy1/BAD_WALK LEFT 4.png" type="Texture" id=7]
+[ext_resource path="res://sprites/charachters/enemy1/BAD_WALK LEFT 2.png" type="Texture" id=8]
+[ext_resource path="res://sprites/charachters/enemy1/BAD_WALK LEFT 6.png" type="Texture" id=9]
+[ext_resource path="res://sprites/charachters/enemy1/BAD_WALK LEFT 1.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "EnemyMoving",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24.4812, 54.3798 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.3675, 3.80392 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 35.0388, 55.2702 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Enemy1hurt"
+length = 0.2
+step = 0.02
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimatedSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1.7818, -0.25, 0, 0.25, 0, 2.22726, -0.25, 0, 0.25, 0, 4.00907, -0.25, 0, 0.25, 0, 4.14149, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.16, 0.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 22.2725, -0.25, 0, 0.25, 0, 39.1995, -0.25, 0, 0.25, 0, 57.0175, -0.25, 0, 0.25, 0, 75.6302, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.16, 0.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0, 0.210999, -0.25, 0, 0.25, 0, 0.213749, -0.25, 0, 0.25, 0, 0.224747, -0.25, 0, 0.25, 0, 0.225565, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.16, 0.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("AnimatedSprite:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0, 0.142597, -0.25, 0, 0.25, 0, 0.0989703, -0.25, 0, 0.25, 0, 0.0530477, -0.25, 0, 0.25, 0, 0.00507693, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.16, 0.2 )
+}
+
+[node name="enemy1" type="KinematicBody2D"]
+collision_layer = 2147483664
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 1 )
+animation = "EnemyMoving"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+position = Vector2( -0.184763, 23.2148 )
+shape = SubResource( 2 )
+
+[node name="enemyFloorDetector" type="RayCast2D" parent="."]
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+
+[node name="enemy1Hitbox" type="Area2D" parent="."]
+collision_layer = 2147483664
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy1Hitbox"]
+position = Vector2( 0.386677, -61.5851 )
+scale = Vector2( 0.919919, 0.910804 )
+shape = SubResource( 3 )
+
+[node name="sideEnemyMichaelHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sideEnemyMichaelHitbox"]
+position = Vector2( 1.32609, 22.242 )
+shape = SubResource( 4 )
+
+[node name="DeleteEnemyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enemy1hurt = SubResource( 5 )
+
+[node name="damageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 4.5
+attenuation = 0.420448
+
+[node name="coinAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="MichaelDamageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+[connection signal="body_entered" from="enemy1Hitbox" to="." method="_on_enemy1Hitbox_body_entered"]
+[connection signal="body_entered" from="sideEnemyMichaelHitbox" to="." method="_on_sideEnemyMichaelHitbox_body_entered"]
+[connection signal="timeout" from="DeleteEnemyTimer" to="." method="_on_DeleteEnemyTimer_timeout"]

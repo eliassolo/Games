@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://sprites/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://HUD_TROPHY.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.0117647, 0.0117647, 0.435294 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="HUD_TROPHY" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 569.0
+margin_top = 27.0
+margin_right = 704.0
+margin_bottom = 71.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 573.753
+margin_top = 29.0
+margin_right = 613.753
+margin_bottom = 69.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 622.423
+margin_top = 45.0
+margin_right = 649.423
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 648.792
+margin_top = 43.0
+margin_right = 696.792
+margin_bottom = 67.0
+custom_fonts/font = SubResource( 1 )
+text = "##"
+__meta__ = {
+"_edit_use_anchors_": false
+}

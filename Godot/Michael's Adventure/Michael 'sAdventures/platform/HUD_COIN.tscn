@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sprites/charachters/coin/Coin 4.png" type="Texture" id=1]
+[ext_resource path="res://sprites/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://HUD_COIN.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0117647, 0.0117647, 0.435294 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="HUD_COIN" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 26.0
+margin_top = 26.0
+margin_right = 173.0
+margin_bottom = 71.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 29.6216
+margin_top = 30.4867
+margin_right = 69.6216
+margin_bottom = 70.4867
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 80.0
+margin_top = 40.0
+margin_right = 104.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CoinLabel" type="Label" parent="."]
+margin_left = 112.472
+margin_top = 40.0
+margin_right = 164.472
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 3 )
+text = "##"
+__meta__ = {
+"_edit_use_anchors_": false
+}

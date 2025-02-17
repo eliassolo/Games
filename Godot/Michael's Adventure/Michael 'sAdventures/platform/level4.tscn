@@ -1,0 +1,262 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://SolidTilemapL4.tres" type="TileSet" id=1]
+[ext_resource path="res://michael.tscn" type="PackedScene" id=2]
+[ext_resource path="res://MovingPlatform2L4.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD_COIN.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD_DIAMOND.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD_HEARTS.tscn" type="PackedScene" id=6]
+[ext_resource path="res://coins.tscn" type="PackedScene" id=7]
+[ext_resource path="res://diamod.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemy1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://cloud.tscn" type="PackedScene" id=10]
+[ext_resource path="res://spike tilemap.tres" type="TileSet" id=11]
+[ext_resource path="res://MovingPlatform1L4.tscn" type="PackedScene" id=12]
+[ext_resource path="res://FallDetectorL4.tscn" type="PackedScene" id=13]
+[ext_resource path="res://spikeDetectorL4.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Heartl4.tscn" type="PackedScene" id=15]
+[ext_resource path="res://powerUpSmall.tscn" type="PackedScene" id=16]
+[ext_resource path="res://RedPortal.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ParallaxBackgroundFire.tscn" type="PackedScene" id=18]
+[ext_resource path="res://VolcaninFire.tscn" type="PackedScene" id=19]
+[ext_resource path="res://sprites/tiles/Tile_Brown1.png" type="Texture" id=20]
+[ext_resource path="res://portal4to5.tscn" type="PackedScene" id=24]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+func _ready():
+	$\"/root/Autoload\".MainMenu = false
+	$\"/root/Autoload\".buttonVisibility = true
+"
+
+[sub_resource type="TileSet" id=2]
+0/name = "Tile_Brown1.png 0"
+0/texture = ExtResource( 20 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="level4" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="ParallaxBackgroundFire" parent="." instance=ExtResource( 18 )]
+
+[node name="RedPortal" parent="." instance=ExtResource( 17 )]
+position = Vector2( -952.482, -86.6338 )
+frame = 1
+
+[node name="GhostTileMap" type="TileMap" parent="."]
+position = Vector2( -431.153, 0 )
+tile_set = SubResource( 2 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -720840, 0, 0, -655304, 0, 0, -655301, 0, 0, -655300, 0, 0, -589768, 0, 0, -589767, 0, 0, -589766, 0, 0, -589765, 0, 0, -589764, 0, 0, -524232, 0, 0, -524231, 0, 0, -524230, 0, 0, -524229, 0, 0, -524228, 0, 0, -458693, 0, 0, -458692, 0, 0 )
+
+[node name="SolidTilemapL4" type="TileMap" parent="."]
+position = Vector2( -431.153, 0 )
+tile_set = ExtResource( 1 )
+collision_layer = 2
+collision_mask = 17
+format = 1
+tile_data = PoolIntArray( -1310660, 1073741824, 0, -1310659, 1073741824, 0, -1310658, 1073741824, 0, -1245122, 1073741824, 0, -1114122, 0, 0, -1179586, 1073741824, 0, -1048586, 0, 0, -1114050, 1073741824, 0, -983050, 0, 0, -1048514, 1073741824, 0, -917514, 0, 0, -982978, 1073741824, 0, -851978, 0, 0, -917442, 1073741824, 0, -786442, 0, 0, -851906, 1073741824, 0, -720906, 0, 0, -786370, 1073741824, 0, -655370, 0, 0, -720844, 1, 0, -720843, 5, 0, -720842, 5, 0, -720841, 5, 0, -720839, 5, 0, -720838, 5, 0, -720837, 5, 0, -720836, 5, 0, -720835, 5, 0, -589834, 0, 0, -655307, 1, 0, -655306, 5, 0, -655305, 5, 0, -655303, 5, 0, -655302, 5, 0, -655299, 5, 0, -524298, 0, 0, -589770, 1, 0, -589769, 5, 0, -589763, 5, 0, -458762, 0, 0, -524233, 1, 0, -524227, 5, 0, -393226, 0, 0, -393225, 0, 0, -393224, 0, 0, -393223, 2, 0, -458696, 1, 0, -458695, 5, 0, -458694, 5, 0, -458691, 5, 0, -327690, 0, 0, -393159, 1, 0, -393158, 5, 0, -393157, 0, 0, -393156, 0, 0, -393155, 5, 0, -262154, 0, 0, -327622, 1, 0, -327621, 5, 0, -327620, 5, 0, -327619, 5, 0, -196618, 0, 0, -131082, 0, 0, -65546, 0, 0, -10, 0, 0, 65526, 0, 0, 27, 8, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 4, 0, 131062, 0, 0, 196598, 0, 0, 262134, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 2, 0, 262187, 8, 0, 262188, 5, 0, 262189, 5, 0, 262190, 5, 0, 262191, 5, 0, 262192, 5, 0, 262193, 4, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 2, 0, 458743, 0, 0, 458744, 0, 0, 458745, 0, 0, 458746, 0, 0, 458747, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 2, 0, 524279, 0, 0, 524280, 0, 0, 524281, 0, 0, 524282, 0, 0, 524283, 0, 0, 524284, 0, 0, 524285, 0, 0, 524286, 2, 0, 589815, 0, 0, 589816, 0, 0, 589817, 0, 0, 589818, 0, 0, 589819, 0, 0, 589820, 0, 0, 589821, 2, 0, 655351, 0, 0, 655352, 0, 0, 655353, 0, 0, 655354, 0, 0, 655355, 0, 0, 655356, 2, 0, 720887, 0, 0, 720888, 0, 0, 720889, 0, 0, 720890, 0, 0, 720891, 2, 0, 786423, 0, 0, 786424, 0, 0, 786425, 0, 0, 786426, 2, 0 )
+
+[node name="portal4to5" parent="." instance=ExtResource( 24 )]
+position = Vector2( 3402.85, -507.946 )
+
+[node name="michael" parent="." instance=ExtResource( 2 )]
+position = Vector2( -917.889, -98.163 )
+
+[node name="Camera2DL4" type="Camera2D" parent="michael"]
+current = true
+limit_left = -1007
+limit_top = -1200
+limit_right = 3535
+limit_bottom = 769
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="HUD_COIN" parent="." instance=ExtResource( 4 )]
+
+[node name="HUD_DIAMOND" parent="." instance=ExtResource( 5 )]
+
+[node name="HUD_HEARTS" parent="." instance=ExtResource( 6 )]
+
+[node name="coins" parent="." instance=ExtResource( 7 )]
+position = Vector2( -960, -560 )
+
+[node name="coins2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -560, 224 )
+
+[node name="coins3" parent="." instance=ExtResource( 7 )]
+position = Vector2( -760, 224 )
+
+[node name="coins4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2520, 224 )
+
+[node name="coins5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2456, 224 )
+
+[node name="coins6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2392, 224 )
+
+[node name="coins7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2328, 248 )
+
+[node name="coins8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2648, 224 )
+
+[node name="coins10" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2712, 224 )
+
+[node name="coins11" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2768, 256 )
+
+[node name="coins9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2584, 224 )
+
+[node name="coins12" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3248, -480 )
+
+[node name="coins17" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3312, -480 )
+
+[node name="coins18" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3312, -544 )
+
+[node name="coins13" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3248, -544 )
+
+[node name="coins14" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3184, -512 )
+
+[node name="coins15" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3184, -592 )
+
+[node name="coins16" parent="." instance=ExtResource( 7 )]
+position = Vector2( 3184, -672 )
+
+[node name="diamod" parent="." instance=ExtResource( 8 )]
+position = Vector2( -960, -480 )
+
+[node name="enemy1" parent="." instance=ExtResource( 9 )]
+position = Vector2( -178.553, 227.574 )
+
+[node name="enemy2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2560, 96 )
+
+[node name="enemy3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1600.64, -80.9677 )
+
+[node name="enemy4" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1381.21, -86.6609 )
+
+[node name="cloud" parent="." instance=ExtResource( 10 )]
+position = Vector2( -664.866, -482.095 )
+cloudORrock = -1
+
+[node name="cloud2" parent="." instance=ExtResource( 10 )]
+position = Vector2( -369.315, -623.279 )
+cloudORrock = -1
+
+[node name="cloud3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 266.534, -518.443 )
+cloudORrock = -1
+
+[node name="cloud4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 566.08, -452.509 )
+cloudORrock = -1
+
+[node name="cloud5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2535.98, -633.03 )
+cloudORrock = -1
+
+[node name="cloud6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2240.62, -704.416 )
+cloudORrock = -1
+
+[node name="cloud7" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2827.22, -612.436 )
+cloudORrock = -1
+
+[node name="cloud8" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2205.28, 328.553 )
+cloudORrock = -1
+
+[node name="MovingPlatform1L4" parent="." instance=ExtResource( 12 )]
+position = Vector2( -78, 338 )
+
+[node name="MovingPlatform1L5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1954.64, 282.758 )
+
+[node name="SpikeTilemapL4" type="TileMap" parent="."]
+position = Vector2( -431.153, 0 )
+tile_set = ExtResource( 11 )
+format = 1
+tile_data = PoolIntArray( -786380, 1073741827, 0, -458759, 0, 0, -65507, 0, 0, -65506, 0, 0, 262137, 0, 0, 262140, 0, 0, 262143, 0, 0 )
+
+[node name="MovingPlatform2L4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 976, 529 )
+scale = Vector2( 0.15, 0.1 )
+
+[node name="FallDetectorL4" parent="." instance=ExtResource( 13 )]
+position = Vector2( 304.33, -388.385 )
+
+[node name="spikeDetectorL4" parent="." instance=ExtResource( 14 )]
+
+[node name="SmallPowerUp" parent="." instance=ExtResource( 16 )]
+position = Vector2( 3060.73, -859.121 )
+
+[node name="VolcaninFire" parent="." instance=ExtResource( 19 )]
+position = Vector2( 1336.95, 1245.42 )
+frame = 1
+
+[node name="Heartl4" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1488.89, -304.781 )
+[connection signal="StuckOnCeiling" from="michael" to="HUD_HEARTS" method="_on_michael_StuckOnCeiling"]
+[connection signal="killMichael" from="HUD_HEARTS" to="michael" method="_on_HUD_HEARTS_killMichael"]
+[connection signal="coinIsCollected" from="coins" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins2" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins3" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins4" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins5" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins6" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins7" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins8" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins10" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins11" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins9" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins12" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins17" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins18" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins13" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins14" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins15" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins16" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="DiamondIsCollected" from="diamod" to="HUD_DIAMOND" method="_on_diamod_DiamondIsCollected"]
+[connection signal="AddCoin" from="enemy1" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy1" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy2" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy2" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy3" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy3" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy4" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy4" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="fallDetectorL4" from="FallDetectorL4" to="HUD_DIAMOND" method="_on_FallDetectorL4_fallDetectorL4"]
+[connection signal="fallDetectorL4" from="FallDetectorL4" to="HUD_HEARTS" method="_on_FallDetectorL4_fallDetectorL4"]
+[connection signal="fallDetectorL4" from="FallDetectorL4" to="HUD_COIN" method="_on_FallDetectorL4_fallDetectorL4"]
+[connection signal="spikeDetectorL4" from="spikeDetectorL4" to="HUD_HEARTS" method="_on_skipeTilemapDamage_L1_spikeDamage"]
+[connection signal="powerUpSmall_collected" from="SmallPowerUp" to="michael" method="_on_Area2D_powerUpSmall_collected"]
+[connection signal="heartIsCollected" from="Heartl4" to="HUD_HEARTS" method="_on_Heartl4_heartIsCollected"]

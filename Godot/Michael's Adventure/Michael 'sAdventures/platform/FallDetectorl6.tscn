@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://FallDetectorl6.gd" type="Script" id=1]
+[ext_resource path="res://VolcaninFire.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://sound/sound effects/damage.wav" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5924.56, 293.716 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2378.77, 87.1406 )
+
+[node name="FallDetectorL6" type="Area2D"]
+position = Vector2( 939.981, -1410.92 )
+scale = Vector2( 0.4, 1 )
+collision_layer = 4
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -466.767, 4312.28 )
+shape = SubResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( -44.7976, 833.807 )
+collision_layer = 0
+collision_mask = 2147483648
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+position = Vector2( -399.574, 4414.34 )
+scale = Vector2( 1.7, 1.7 )
+frames = ExtResource( 2 )
+animation = "fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -470.13, 4411.75 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="." to="." method="_on_FallDetectorL6_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

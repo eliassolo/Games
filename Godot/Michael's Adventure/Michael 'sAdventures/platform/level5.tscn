@@ -1,0 +1,257 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://SolidTilemapL4.tres" type="TileSet" id=1]
+[ext_resource path="res://michael.tscn" type="PackedScene" id=2]
+[ext_resource path="res://spike tilemap.tres" type="TileSet" id=3]
+[ext_resource path="res://cloud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MovingPlatform1L5.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MovingPlatform2L5.tscn" type="PackedScene" id=6]
+[ext_resource path="res://HUD_HEARTS.tscn" type="PackedScene" id=7]
+[ext_resource path="res://HUD_DIAMOND.tscn" type="PackedScene" id=8]
+[ext_resource path="res://HUD_COIN.tscn" type="PackedScene" id=9]
+[ext_resource path="res://enemy1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://coins.tscn" type="PackedScene" id=11]
+[ext_resource path="res://diamod.tscn" type="PackedScene" id=12]
+[ext_resource path="res://fallDetectorl5.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SpikeDetectorL5.tscn" type="PackedScene" id=14]
+[ext_resource path="res://RedPortal.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sprites/backround/Volc_sky 3.png" type="Texture" id=16]
+[ext_resource path="res://sprites/backround/Volcano.png" type="Texture" id=17]
+[ext_resource path="res://VolcaninFire.tscn" type="PackedScene" id=18]
+[ext_resource path="res://portal5to6.tscn" type="PackedScene" id=19]
+[ext_resource path="res://level5.gd" type="Script" id=20]
+
+[node name="level5" type="Node2D"]
+script = ExtResource( 20 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1.1, 1.1 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/sky"]
+position = Vector2( -1635.26, -1108.65 )
+scale = Vector2( 1.6, 2.5 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="volcano" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/volcano"]
+position = Vector2( 496.017, 822.177 )
+scale = Vector2( 0.9, 1 )
+texture = ExtResource( 17 )
+
+[node name="SolidTileMapL5" type="TileMap" parent="."]
+position = Vector2( -1053.33, 0 )
+tile_set = ExtResource( 1 )
+collision_layer = 2147483650
+collision_mask = 17
+format = 1
+tile_data = PoolIntArray( -917510, 5, 0, -851974, 5, 0, -786438, 5, 0, -720902, 5, 0, -655366, 5, 0, -589830, 5, 0, -524294, 5, 0, -458758, 5, 0, -524255, 8, 0, -524254, 0, 0, -524253, 9, 0, -393222, 5, 0, -327686, 5, 0, -262150, 5, 0, -327633, 1, 0, -327632, 5, 0, -327631, 5, 0, -327630, 5, 0, -327629, 5, 0, -327628, 5, 0, -327627, 2, 0, -196614, 5, 0, -131078, 5, 0, -65542, 5, 0, -6, 5, 0, 65530, 5, 0, 131067, 5, 0, 131068, 5, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 2, 0, 65545, 8, 0, 65546, 5, 0, 65547, 5, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 4, 0, 65559, 8, 0, 65560, 0, 0, 65561, 0, 0, 65562, 0, 0, 65563, 0, 0, 65564, 0, 0, 65565, 0, 0, 65566, 0, 0, 65567, 0, 0, 65568, 4, 0, 196603, 5, 0, 196604, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 2, 0, 262139, 5, 0, 262140, 5, 0, 262141, 5, 0, 262142, 5, 0, 262143, 5, 0, 196608, 5, 0, 196609, 5, 0, 196610, 5, 0, 196611, 2, 0, 327675, 5, 0, 327676, 5, 0, 327677, 5, 0, 327678, 5, 0, 327679, 5, 0, 262144, 5, 0, 262145, 5, 0, 262146, 2, 0, 262149, 8, 0, 262150, 5, 0, 262151, 5, 0, 262152, 5, 0, 262153, 4, 0, 262159, 8, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 9, 0, 393211, 5, 0, 393212, 5, 0, 393213, 5, 0, 393214, 5, 0, 393215, 5, 0, 327680, 5, 0, 327681, 2, 0, 458747, 5, 0, 458748, 5, 0, 458749, 5, 0, 458750, 5, 0, 458751, 5, 0, 393216, 2, 0, 524283, 5, 0, 524284, 5, 0, 524285, 5, 0, 524286, 5, 0, 524287, 2, 0, 589819, 5, 0, 589820, 5, 0, 589821, 5, 0, 589822, 2, 0, 524320, 8, 0, 524321, 5, 0, 524322, 5, 0, 524323, 5, 0, 524324, 5, 0, 524325, 5, 0, 524326, 4, 0, 786441, 8, 0, 786442, 0, 0, 786443, 4, 0 )
+
+[node name="RedPortal" parent="." instance=ExtResource( 15 )]
+position = Vector2( -1303.78, -246.321 )
+frame = 1
+
+[node name="portal5to6" parent="." instance=ExtResource( 19 )]
+position = Vector2( -380.085, 646.417 )
+
+[node name="michael" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1268.98, -241.954 )
+
+[node name="Camera2DL5" type="Camera2D" parent="michael"]
+current = true
+limit_left = -1373
+limit_top = -950
+limit_right = 2600
+limit_bottom = 1200
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_limits = true
+
+[node name="cloud" parent="." instance=ExtResource( 4 )]
+position = Vector2( 184, 56 )
+cloudORrock = -1
+
+[node name="cloud2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 896, -448 )
+cloudORrock = -1
+
+[node name="cloud3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 931.636, -208 )
+cloudORrock = -1
+
+[node name="cloud5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 800, 688 )
+cloudORrock = -1
+
+[node name="cloud6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 520, 824 )
+cloudORrock = -1
+
+[node name="cloud7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 752 )
+cloudORrock = -1
+
+[node name="MovingPlatform1L5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1405.46, -389.066 )
+
+[node name="MovingPlatform2L5" parent="." instance=ExtResource( 6 )]
+position = Vector2( -32.0001, 1033.02 )
+
+[node name="HUD_HEARTS" parent="." instance=ExtResource( 7 )]
+
+[node name="HUD_COIN" parent="." instance=ExtResource( 9 )]
+
+[node name="HUD_DIAMOND" parent="." instance=ExtResource( 8 )]
+
+[node name="coins" parent="." instance=ExtResource( 11 )]
+position = Vector2( -1205.97, 24 )
+
+[node name="coins2" parent="." instance=ExtResource( 11 )]
+position = Vector2( -959.685, 24 )
+
+[node name="coins3" parent="." instance=ExtResource( 11 )]
+position = Vector2( -728, 24 )
+
+[node name="coins4" parent="." instance=ExtResource( 11 )]
+position = Vector2( -416, 32 )
+
+[node name="coins5" parent="." instance=ExtResource( 11 )]
+position = Vector2( -96, 32 )
+
+[node name="coins11" parent="." instance=ExtResource( 11 )]
+position = Vector2( 880, 24 )
+
+[node name="coins12" parent="." instance=ExtResource( 11 )]
+position = Vector2( 616, 24 )
+
+[node name="coins13" parent="." instance=ExtResource( 11 )]
+position = Vector2( 184, -4.76837e-07 )
+
+[node name="coins16" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1408, 464 )
+
+[node name="coins18" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1024, 464 )
+
+[node name="coins17" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1176, 280 )
+
+[node name="coins14" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2376, -488 )
+
+[node name="coins15" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2376, -416 )
+
+[node name="coins6" parent="." instance=ExtResource( 11 )]
+position = Vector2( -216, -96 )
+
+[node name="coins10" parent="." instance=ExtResource( 11 )]
+position = Vector2( -256, -168 )
+
+[node name="coins7" parent="." instance=ExtResource( 11 )]
+position = Vector2( -304, -96 )
+
+[node name="coins8" parent="." instance=ExtResource( 11 )]
+position = Vector2( -352, -32 )
+
+[node name="coins9" parent="." instance=ExtResource( 11 )]
+position = Vector2( -160, -32 )
+
+[node name="enemy1" parent="." instance=ExtResource( 10 )]
+position = Vector2( -360, -24 )
+enemyDirect = 1
+
+[node name="enemy4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 888, -24 )
+enemyDirect = 1
+
+[node name="enemy7" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1344, 424 )
+enemyDirect = 1
+
+[node name="enemy8" parent="." instance=ExtResource( 10 )]
+position = Vector2( -27.7879, 857.792 )
+
+[node name="enemy9" parent="." instance=ExtResource( 10 )]
+position = Vector2( -918.882, -41.9993 )
+enemyDirect = 1
+
+[node name="enemy2" parent="." instance=ExtResource( 10 )]
+position = Vector2( -120, -24 )
+
+[node name="enemy3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 608, -24 )
+
+[node name="enemy5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2168, -408 )
+
+[node name="enemy6" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1078.56, 425.416 )
+
+[node name="SpikeTileMap" type="TileMap" parent="."]
+position = Vector2( -1053.33, 0 )
+tile_set = ExtResource( 3 )
+collision_layer = 2
+collision_mask = 17
+format = 1
+tile_data = PoolIntArray( -393168, 0, 0, -393165, 0, 0, -393164, 0, 0, 65535, 0, 0, 3, 0, 0, 24, 0, 0, 27, 0, 0, 28, 0, 0, 31, 0, 0, 196614, 0, 0, 196616, 0, 0, 196624, 0, 0, 196627, 0, 0, 196630, 0, 0, 458786, 0, 0, 458787, 0, 0 )
+
+[node name="diamod" parent="." instance=ExtResource( 12 )]
+position = Vector2( 2376, -352 )
+
+[node name="fallDetectorl5" parent="." instance=ExtResource( 13 )]
+position = Vector2( -75.3872, -135.312 )
+
+[node name="SpikeDetectorL5" parent="." instance=ExtResource( 14 )]
+
+[node name="VolcaninFire" parent="." instance=ExtResource( 18 )]
+position = Vector2( 711.4, 1730.31 )
+frame = 0
+[connection signal="StuckOnCeiling" from="michael" to="HUD_HEARTS" method="_on_michael_StuckOnCeiling"]
+[connection signal="killMichael" from="HUD_HEARTS" to="michael" method="_on_HUD_HEARTS_killMichael"]
+[connection signal="coinIsCollected" from="coins" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins2" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins3" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins4" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins5" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins11" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins12" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins13" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins16" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins18" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins17" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins14" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins15" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins6" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins10" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins7" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins8" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="coinIsCollected" from="coins9" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="AddCoin" from="enemy1" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy1" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy4" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy4" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy7" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy7" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy8" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy8" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy9" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy9" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy2" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy2" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy3" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy3" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy5" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy5" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="AddCoin" from="enemy6" to="HUD_COIN" method="_on_coin_coinIsCollected"]
+[connection signal="healthChanged" from="enemy6" to="HUD_HEARTS" method="_on_enemy1_healthChanged"]
+[connection signal="DiamondIsCollected" from="diamod" to="HUD_DIAMOND" method="_on_diamod_DiamondIsCollected"]
+[connection signal="fallDetectorl5" from="fallDetectorl5" to="HUD_DIAMOND" method="_on_fallDetectorl5_fallDetectorl5"]
+[connection signal="fallDetectorl5" from="fallDetectorl5" to="HUD_HEARTS" method="_on_fallDetectorl5_fallDetectorl5"]
+[connection signal="fallDetectorl5" from="fallDetectorl5" to="HUD_COIN" method="_on_fallDetectorl5_fallDetectorl5"]
+[connection signal="spikeDamage" from="SpikeDetectorL5" to="HUD_HEARTS" method="_on_skipeTilemapDamage_L1_spikeDamage"]

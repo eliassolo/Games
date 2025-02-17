@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0117647, 0.0117647, 0.435294 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 1 )
+
+[node name="PortalExplained" type="Node2D"]
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 268.0
+margin_bottom = 27.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 1.25992
+margin_top = 1.88988
+margin_right = 265.26
+margin_bottom = 31.8899
+custom_fonts/font = SubResource( 2 )
+text = "Enter the portal to be transfered
+to another level!
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}

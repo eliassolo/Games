@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://invisible tilemap.tres" type="TileSet" id=1]
+
+[node name="invisible tilemap" type="TileMap"]
+tile_set = ExtResource( 1 )
+collision_layer = 2
+collision_mask = 17
+format = 1

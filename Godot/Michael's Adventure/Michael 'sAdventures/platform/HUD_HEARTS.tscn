@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/charachters/Hearts/hearts 1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/charachters/Hearts/hearts 0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/charachters/Hearts/hearts 3.png" type="Texture" id=3]
+[ext_resource path="res://sprites/charachters/Hearts/hearts 2.png" type="Texture" id=4]
+[ext_resource path="res://HUD_HEARTS.gd" type="Script" id=5]
+[ext_resource path="res://Autoload.tscn" type="PackedScene" id=6]
+[ext_resource path="res://sprites/charachters/Hearts/hearts 4.png" type="Texture" id=7]
+[ext_resource path="res://sound/sound effects/damage.wav" type="AudioStream" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0117647, 0.0117647, 0.435294 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Heart2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Heart1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Heart3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Heart0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Heart4",
+"speed": 5.0
+} ]
+
+[node name="HUD_HEARTS" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 359.0
+margin_top = 27.0
+margin_right = 550.0
+margin_bottom = 71.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 454.351, 49.388 )
+scale = Vector2( 0.055, 0.055 )
+frames = SubResource( 2 )
+animation = "Heart4"
+
+[node name="Node2D" parent="." instance=ExtResource( 6 )]
+
+[node name="damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Dog.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Dog.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 236.838, 58.0881 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 2301.69
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 457.827, 51.5271 )
+
+[node name="Dog" type="KinematicBody2D"]
+scale = Vector2( 0.1, 0.1 )
+collision_layer = 65536
+collision_mask = 3
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "idle"
+frame = 2
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -27.8161, 142.253 )
+shape = SubResource( 1 )
+
+[node name="MichaelDetector" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MichaelDetector"]
+shape = SubResource( 2 )
+
+[node name="CloseRangeMichaelDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseRangeMichaelDetector"]
+position = Vector2( -30.1362, 145.046 )
+shape = SubResource( 3 )
+
+[node name="EndTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="body_entered" from="MichaelDetector" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="CloseRangeMichaelDetector" to="." method="_on_CloseRangeMichaelDetector_body_entered"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]

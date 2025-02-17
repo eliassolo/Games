@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/backround/mountains.png" type="Texture" id=1]
+[ext_resource path="res://sprites/backround/Cloud_Big2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/backround/Backgr1.png" type="Texture" id=3]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="sky" type="ParallaxLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="sky"]
+position = Vector2( -1429.97, -600.886 )
+scale = Vector2( 1.81222, 2.4137 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="mountain" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.8, 0.8 )
+
+[node name="Sprite" type="Sprite" parent="mountain"]
+position = Vector2( -1313.71, 321.946 )
+scale = Vector2( 2, 3.33669 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 1.2, 1.2 )
+
+[node name="Sprite" type="Sprite" parent="clouds"]
+position = Vector2( -1110.23, -291.953 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+centered = false
+flip_h = true

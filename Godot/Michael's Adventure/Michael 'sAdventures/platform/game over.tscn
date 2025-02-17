@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://solid tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://sprites/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ExitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/charachters/michael/Gost_3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/charachters/michael/Gost_1.png" type="Texture" id=5]
+[ext_resource path="res://sprites/charachters/michael/Gost_2.png" type="Texture" id=6]
+[ext_resource path="res://MichaelGhost.gd" type="Script" id=7]
+[ext_resource path="res://playAgainButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/charachters/michael/Gost_4.png" type="Texture" id=9]
+[ext_resource path="res://backroundGameOver.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game over.gd" type="Script" id=11]
+[ext_resource path="res://PlayAgainButton.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "GameOverAnim"
+length = 7.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 37.7745, 226.244 ), Vector2( 987.754, 226.244 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+
+[node name="Game Over" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverTileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 393216, 2, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 393220, 2, 0, 393221, 2, 0, 393222, 2, 0, 393223, 2, 0, 393224, 2, 0, 393225, 2, 0, 393226, 2, 0, 393227, 2, 0, 393228, 2, 0, 393229, 2, 0, 393230, 2, 0, 393231, 2, 0, 458752, 2, 0, 458753, 2, 0, 458754, 2, 0, 458755, 2, 0, 458756, 2, 0, 458757, 2, 0, 458758, 2, 0, 458759, 2, 0, 458760, 2, 0, 458761, 2, 0, 458762, 2, 0, 458763, 2, 0, 458764, 2, 0, 458765, 2, 0, 458766, 2, 0, 458767, 2, 0, 524288, 2, 0, 524289, 2, 0, 524290, 2, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 2, 0, 524297, 2, 0, 524298, 2, 0, 524299, 2, 0, 524300, 2, 0, 524301, 2, 0, 524302, 2, 0, 524303, 2, 0, 589824, 2, 0, 589825, 2, 0, 589826, 2, 0, 589827, 2, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 2, 0, 589832, 2, 0, 589833, 2, 0, 589834, 2, 0, 589835, 2, 0, 589836, 2, 0, 589837, 2, 0, 589838, 2, 0, 589839, 2, 0 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 326.798
+margin_top = 26.7802
+margin_right = 657.798
+margin_bottom = 122.78
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.584314, 0.0666667, 0.0666667, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "GAME OVER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 441.305, 552.429 )
+
+[node name="playAgainButton" parent="." instance=ExtResource( 8 )]
+script = ExtResource( 12 )
+
+[node name="MichaelGhost" type="AnimatedSprite" parent="."]
+position = Vector2( 37.7745, 226.244 )
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 2 )
+playing = true
+flip_h = true
+script = ExtResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MichaelGhost"]
+autoplay = "GameOverAnim"
+anims/GameOverAnim = SubResource( 3 )
+
+[node name="backround" parent="." instance=ExtResource( 10 )]

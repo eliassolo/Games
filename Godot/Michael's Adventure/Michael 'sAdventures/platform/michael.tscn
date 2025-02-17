@@ -1,0 +1,95 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://michaelSpeite.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://michael.gd" type="Script" id=2]
+[ext_resource path="res://sprites/buttons/BUTTON 2 left.png" type="Texture" id=3]
+[ext_resource path="res://sprites/buttons/BUTTON 1 left.png" type="Texture" id=4]
+[ext_resource path="res://sprites/buttons/BUTTON 2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/buttons/BUTTON 1 right.png" type="Texture" id=6]
+[ext_resource path="res://sprites/buttons/BUTTON 2 jump.png" type="Texture" id=7]
+[ext_resource path="res://sprites/buttons/BUTTON 1 jump.png" type="Texture" id=8]
+[ext_resource path="res://sound/sound effects/damage.wav" type="AudioStream" id=9]
+[ext_resource path="res://sound/sound effects/jump.wav" type="AudioStream" id=10]
+[ext_resource path="res://sound/sound effects/SmallPowerUp.wav" type="AudioStream" id=11]
+[ext_resource path="res://sound/sound effects/walking.wav" type="AudioStream" id=12]
+[ext_resource path="res://SoundEffectOnOff.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 78.4343, 233.664 )
+
+[node name="michael" type="KinematicBody2D"]
+position = Vector2( 619.727, 157.44 )
+collision_mask = 2147603966
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1.64252 )
+scale = Vector2( 0.2, 0.2 )
+frames = ExtResource( 1 )
+animation = "stand"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.441162, -0.0991821 )
+scale = Vector2( 0.3, 0.3 )
+shape = SubResource( 1 )
+
+[node name="HitcolorTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PowerUpSmallTimer" type="Timer" parent="."]
+
+[node name="PowerUpSmallTimer2" type="Timer" parent="."]
+one_shot = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 20, 0 )
+
+[node name="GhostTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="left" type="TouchScreenButton" parent="ui"]
+position = Vector2( 20, 480 )
+scale = Vector2( 0.15, 0.15 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+action = "ui_left"
+
+[node name="right" type="TouchScreenButton" parent="ui"]
+position = Vector2( 250, 480 )
+scale = Vector2( 0.15, 0.15 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 6 )
+action = "ui_right"
+
+[node name="jump" type="TouchScreenButton" parent="ui"]
+position = Vector2( 900, 480 )
+scale = Vector2( 0.15, 0.15 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+action = "ui_jump"
+
+[node name="Music&SoundOnOff" parent="ui" instance=ExtResource( 13 )]
+
+[node name="damageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -13.358
+pitch_scale = 0.85
+
+[node name="jumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -0.391
+pitch_scale = 0.9
+
+[node name="powerUpSmall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="walking" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = -10.0
+[connection signal="timeout" from="HitcolorTimer" to="." method="_on_HitcolorTimer_timeout"]
+[connection signal="timeout" from="PowerUpSmallTimer" to="." method="_on_PowerUpSmallTimer_timeout"]
+[connection signal="timeout" from="PowerUpSmallTimer2" to="." method="_on_PowerUpSmallTimer2_timeout"]
+[connection signal="timeout" from="GhostTimer" to="." method="_on_GhostTimer_timeout"]
